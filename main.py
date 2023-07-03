@@ -26,5 +26,10 @@ for i in range(0, len(text) - SEQ_LENGTH, STEP_SIZE):
     sentences.append(text[i: i+SEQ_LENGTH])
     next_character.append(text[i+SEQ_LENGTH])
 
-x= np.zeros(len(sentences),SEQ_LENGTH, len(characters,dtype=np.bool)
+x= np.zeros(len(sentences),SEQ_LENGTH, len(characters),dtype=np.bool)
 y= np.zeros(len(sentences), len(characters), dtype=np.bool)
+
+for i,sentences in enumerate(sentences):
+    for t,characters in enumerate(sentences):
+        x[i,t,char_to_index[characters]] =1
+    y[i,char_to_index[next_character[i]]] =1

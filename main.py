@@ -15,3 +15,9 @@ characters = sorted(set[text])
 
 char_to_index = dict((c,i) for i,c in enumerate(characters))
 index_to_char = dict((i,c) for i,c in enumerate(characters))
+
+SEQ_LENGTH =40
+STEP_SIZE =3
+
+sentences = []
+next_charcter = []

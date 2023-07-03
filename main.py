@@ -26,8 +26,8 @@ for i in range(0, len(text) - SEQ_LENGTH, STEP_SIZE):
     sentences.append(text[i: i+SEQ_LENGTH])
     next_character.append(text[i+SEQ_LENGTH])
 
-x= np.zeros(len(sentences),SEQ_LENGTH, len(characters),dtype=np.bool)
-y= np.zeros(len(sentences), len(characters), dtype=np.bool)
+x= np.zeros((len(sentences),SEQ_LENGTH, len(characters)),dtype=np.bool)
+y= np.zeros((len(sentences), len(characters)), dtype=np.bool)
 
 for i,sentences in enumerate(sentences):
     for t,characters in enumerate(sentences):
@@ -39,4 +39,7 @@ model.add(LSTM(128,input_shape = (SEQ_LENGTH, len(characters))))
 model.add(Dense(len(characters)))
 model.add(Activation('softmax'))
 
+model.compile(loss= 'categorical crossentropy',optimizer = RMSprop ( lr= 0.01))
+model.fit(x,y,batch_size = 256 , epochs =4)
 
+model.save("charlie_new_song")

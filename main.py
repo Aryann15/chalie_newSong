@@ -33,3 +33,10 @@ for i,sentences in enumerate(sentences):
     for t,characters in enumerate(sentences):
         x[i,t,char_to_index[characters]] =1
     y[i,char_to_index[next_character[i]]] =1
+
+model= Sequential ()
+model.add(LSTM(128,input_shape = (SEQ_LENGTH, len(characters))))
+model.add(Dense(len(characters)))
+model.add(Activation('softmax'))
+
+
